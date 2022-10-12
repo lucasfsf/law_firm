@@ -8,6 +8,7 @@
 <body>
     <h1>Law Firm</h1>
     <a href="{% url 'articles:articles' %}">Artigos</a>
+    <p>Hello {{ user.username|default:"Guest" }}</p>
     {% block content %}
     {% endblock content %}
 </body>
