@@ -1,2 +1,5 @@
-<h1>Hello World</h1>
-<a href="{% url 'articles:articles' %}">Artigos</a>
+{% extends 'articles/base.html' %}
+
+{% block content%}
+<h1>Home page</h1>
+{% endblock content%}
