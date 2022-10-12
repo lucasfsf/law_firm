@@ -1,5 +1,13 @@
 {% extends 'articles/base.html' %}
 
 {% block content%}
-<p>Hello {{ user.username|default:"Guest" }}</p>
+{% if user.is_authenticated %}
+    <p>Hello {{ user.username }}</p>
+    <a href="{% url 'users:logout' %}">Log Out</a>
+    <p></p>
+{% else %}
+    <p>Hello Guest! Please login to check your processes.</p>
+    <a href="{% url 'users:login' %}">Log In</a>
+{% endif %}
+
 {% endblock content%}
