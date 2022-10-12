@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'articles/index.html')
 
 def articles(request):
-    articles = Article.objects.all()
+    articles = Article.objects.order_by('-date_added')
     context = {
         'articles': articles,
     }

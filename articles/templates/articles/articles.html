@@ -7,6 +7,7 @@
 {% for article in articles %}
     <h2>{{ article.title }}</h2>
     <p>{{ article.content }}</p>
+    <p>{{ article.date_added }}</p>
     <p>_________________________________</p>
 {% endfor %}
 {% endblock content%}
