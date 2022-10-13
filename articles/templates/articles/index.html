@@ -1,5 +1,12 @@
 {% extends 'articles/base.html' %}
 
-{% block content%}
-<h1>Home page</h1>
-{% endblock content%}
+{% block page_header %}
+    <div class="jumbotron">
+        <h1 class="display-3">Lawfirm</h1>
+        <p class="lead">A webapp template to be used by lawfirms where you can publish
+            articles and your clients will be able to keeptrack of their lawsuits in a friendly, non-lawyery language.</p>
+
+        <a class="btn btn-lg btn-primary" href="{% url 'articles:index' %}">Contact</a>
+
+    </div>
+{% endblock page_header %}
