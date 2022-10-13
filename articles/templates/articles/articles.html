@@ -1,13 +1,28 @@
-
 {% extends 'articles/base.html' %}
+{% load bootstrap4 %}
 
-{% block content%}
-<h1>Artigos:</h1>
+{% bootstrap_messages %}
 
-{% for article in articles %}
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.content }}</p>
-    <p>{{ article.date_added }}</p>
-    <p>_________________________________</p>
-{% endfor %}
-{% endblock content%}
+{% block page_header %}
+    <h2>Articles</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+    <div class="card-deck">
+        {% for article in articles %}
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Temporary Law</h6>
+                    <p class="card-text">{{ article.content }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Published in {{ article.date_added }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
