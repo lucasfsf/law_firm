@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'processes',
     'users',
 
+    # Other apps
+    "bootstrap4",
+
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
