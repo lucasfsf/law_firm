@@ -2,6 +2,6 @@ from django.urls import path
 
 from . import views
 
-app_name = 'processes'
+app_name = 'lawsuits'
 urlpatterns = [
 ]

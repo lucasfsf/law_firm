@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     'articles',
-    'processes',
+    'lawsuits',
     'users',
 
     # Other apps
