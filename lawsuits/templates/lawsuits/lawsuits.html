@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                    {{ lawsuit.description }}
+                    <a href="{% url 'lawsuits:movement' lawsuit.id %}">{{ lawsuit.description }}</a>
                     </h5>
                     <h6 class="card-subtitle mb-2 text-muted"> {{ lawsuit.number }}</h6>
                 </div>

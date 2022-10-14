@@ -1,0 +1,26 @@
+{% extends 'articles/base.html' %}
+{% load bootstrap4 %}
+
+{% bootstrap_messages %}
+
+{% block page_header %}
+    <h2>{{ lawsuit.description }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+    <div class="card-deck">
+        {% for movement in movements %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ movement.description|safe }}
+                    </h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Atualizado em {{ movement.date_added }}</small>
+                </div>
+            </div>
+        
+        {% endfor %}
+    </div>
+{% endblock content %}
