@@ -1,12 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Lawsuit
 
 def lawsuits(request):
-    #TODO - Only display lawsuits that belong to a specific user
-    lawsuits = Lawsuit.objects.all()
-    print(lawsuits)
-    context = {
-        "lawsuits": lawsuits,
-    }
+    if request.user.is_authenticated:
+        lawsuits = Lawsuit.objects.filter(customer=request.user)
+        context = {
+            "lawsuits": lawsuits,
+        }
+    else:
+        return redirect("users:login")
     return render(request, "lawsuits/lawsuits.html", context)
