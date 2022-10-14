@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'articles',
     'lawsuits',
     'users',
+    'contacts',
 
     # Other apps
     'bootstrap4',
@@ -135,3 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = "users:login"
 LOGIN_REDIRECT_URL = "lawsuits:lawsuits"
 LOGOUT_REDIRECT_URL = "articles:index"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
