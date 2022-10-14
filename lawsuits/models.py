@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Customer(models.Model):
     """A model that represents a single costumer that can have more than on lawsuit"""
@@ -21,7 +22,7 @@ class Movement(models.Model):
     """A model where the lawyer can describe in simple terms whats happening in the process.
     Its in a separete model so that the history of the process can be mantained"""
     lawsuit = models.ForeignKey(Lawsuit, on_delete=models.CASCADE)
-    description = models.TextField()
+    description = RichTextField()
     date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):

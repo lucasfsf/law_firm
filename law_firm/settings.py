@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'users',
 
     # Other apps
-    "bootstrap4",
+    'bootstrap4',
+    'ckeditor',
 
     # Django apps
     'django.contrib.admin',

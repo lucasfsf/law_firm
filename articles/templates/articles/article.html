@@ -8,6 +8,6 @@
 {% endblock page_header %}
 
 {% block content %}
-    <p>{{ article.content }}</p>
+    {{ article.content|safe }}
 
 {% endblock content %}
