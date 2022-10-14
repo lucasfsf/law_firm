@@ -27,12 +27,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'articles:articles' %}">Articles</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:dashboard' %}">Lawsuits</a></li>
+                    <a class="nav-link" href="{% url 'lawsuits:lawsuits' %}">Lawsuits</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'articles:index' %}">Contact</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:dashboard' %}">Account</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'users:logout' %}">Log out</a></li>
                 {% else %}

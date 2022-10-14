@@ -1,15 +1,22 @@
 {% extends 'articles/base.html' %}
+{% load bootstrap4 %}
 
-{% block content%}
+{% bootstrap_messages %}
+
+{% block page_header %}
+    <h2>Account</h2>
+{% endblock page_header %}
+
+
+{% block content %}
 {% if user.is_authenticated %}
-    <p>Hello {{ user.username }}</p>
-    <a href="{% url 'lawsuits:lawsuits' %}">Acessar processos</a>
+    <h5>Hello {{ user.first_name }} {{ user.last_name }}</h5>
     <p></p>
-    <a href="{% url 'users:password_change' %}">Change password</a>
+    <a href="{% url 'users:password_change' %}" class="btn btn-primary">Change password</a>
     <p></p>
 {% else %}
     <p>Hello Guest! Please login to check your processes.</p>
     <a href="{% url 'users:login' %}">Log In</a>
 {% endif %}
 
-{% endblock content%}
+{% endblock content %}
