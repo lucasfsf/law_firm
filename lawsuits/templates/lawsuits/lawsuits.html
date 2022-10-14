@@ -19,7 +19,15 @@
                     <h6 class="card-subtitle mb-2 text-muted"> {{ lawsuit.number }}</h6>
                 </div>
             </div>
-        
+        {% empty %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                    You don't have any lawsuits registered yet.
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted"> N/A </h6>
+                </div>
+            </div>
         {% endfor %}
     </div>
 
