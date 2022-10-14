@@ -19,10 +19,9 @@ def movement(request, lawsuit_id):
     # Shows a single, full, article
     lawsuit = Lawsuit.objects.get(id=lawsuit_id)
     # If user is not the owner of the lawsuit, redirect to lawsuits
-    print(lawsuit.customer.all())
-    print(request.user)
     if request.user not in lawsuit.customer.all():
         return redirect("lawsuits:lawsuits")
+        
     movements = Movement.objects.filter(lawsuit=lawsuit).order_by('-date_added')
     context = {
         "movements": movements,

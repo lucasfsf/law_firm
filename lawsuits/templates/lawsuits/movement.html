@@ -8,9 +8,8 @@
 {% endblock page_header %}
 
 {% block content %}
-    <div class="card-deck">
         {% for movement in movements %}
-            <div class="card">
+            <div class="card border-dark mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{ movement.description|safe }}
@@ -22,5 +21,4 @@
             </div>
         
         {% endfor %}
-    </div>
 {% endblock content %}
