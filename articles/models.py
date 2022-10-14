@@ -25,7 +25,7 @@ class Article(models.Model):
         (CIVIL, "Civil"),
         (ADMINISTRATIVE, "Administrativo"),
         (CRIMINAL, "Criminal"),
-        (CORPORATE, "Corporativo"),
+        (CORPORATE, "Empresarial"),
         (FAMILY, "de Familia"),
         (LABOR, "Trabalhista"),
         (OTHERS, "(Outros)"),
@@ -35,6 +35,6 @@ class Article(models.Model):
         choices=TRIBUTARY_LAW_CHOICES, 
         default=OTHERS,
         )
-        
+
     def __str__(self):
         return self.title
