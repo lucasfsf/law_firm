@@ -1,0 +1,26 @@
+{% extends 'articles/base.html' %}
+{% load bootstrap4 %}
+
+{% bootstrap_messages %}
+
+{% block page_header %}
+    <h2>Lawsuits</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+    <div class="card-deck">
+        {% for lawsuit in lawsuits %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                    {{ lawsuit.description }}
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted"> {{ lawsuit.number }}</h6>
+                </div>
+            </div>
+        
+        {% endfor %}
+    </div>
+
+{% endblock content %}

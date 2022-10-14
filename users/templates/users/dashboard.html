@@ -3,6 +3,8 @@
 {% block content%}
 {% if user.is_authenticated %}
     <p>Hello {{ user.username }}</p>
+    <a href="{% url 'lawsuits:lawsuits' %}">Acessar processos</a>
+    <p></p>
     <a href="{% url 'users:password_change' %}">Change password</a>
     <p></p>
 {% else %}
