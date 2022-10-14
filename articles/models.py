@@ -8,6 +8,8 @@ class Article(models.Model):
     date_added = models.DateField(auto_now_add=True)
 
     #Law Choices
+    # TODO You might want to update the values below to add new types of law or to translate them.
+    # If you add new types of law, you need to update the TRIBUTARY_LAW_CHOICES below to include the info
     CONSTITUTIONAL = "CO"
     TAX = "TR"
     CIVIL = "CI"
@@ -19,15 +21,15 @@ class Article(models.Model):
     OTHERS = "OT"
 
     TRIBUTARY_LAW_CHOICES = [
-        (CONSTITUTIONAL, "Constitucional"),
-        (TAX, "Tributário"),
+        (CONSTITUTIONAL, "Constitutional"),
+        (TAX, "Tax"),
         (CIVIL, "Civil"),
-        (ADMINISTRATIVE, "Administrativo"),
+        (ADMINISTRATIVE, "Administrative"),
         (CRIMINAL, "Criminal"),
-        (CORPORATE, "Empresarial"),
-        (FAMILY, "de Familia"),
-        (LABOR, "Trabalhista"),
-        (OTHERS, "(Outros)"),
+        (CORPORATE, "Corporate"),
+        (FAMILY, "Family"),
+        (LABOR, "LAbor"),
+        (OTHERS, "(Other)"),
     ]
 
     law_type = models.CharField(max_length=2, 

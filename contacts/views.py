@@ -11,6 +11,8 @@ def contact(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
+
+            # TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles"
             subject = "Website Inquiry"
             body = {
                 'first_name': form.cleaned_data['first_name'],
@@ -24,6 +26,7 @@ def contact(request):
             try:
                 send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
             except BadHeaderError:
+                # TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles"
                 return HttpResponse('Invalid header found.')
             return redirect("articles:index")
     context = {

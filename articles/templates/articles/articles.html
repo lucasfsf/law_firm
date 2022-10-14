@@ -4,6 +4,7 @@
 {% bootstrap_messages %}
 
 {% block page_header %}
+    <!--TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles" -->
     <h2>Articles</h2>
 {% endblock page_header %}
 
@@ -16,10 +17,12 @@
                     <h5 class="card-title">
                         <a href="{% url 'articles:article' article.id %}">{{ article.title }}</a>
                     </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Direito {{ article.get_law_type_display }}</h6>
+                    <!--TODO You might want to update the text based on your language. I.E  "Direito"/"Law" -->
+                    <h6 class="card-subtitle mb-2 text-muted">{{ article.get_law_type_display }} Law</h6>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Published in {{ article.date_added }}</small>
+                    <!--TODO You might want to update the text based on your language. I.E  "Publicado em"/"Published in" -->
+                    <small class="text-muted">Published in {{ article.date_added|date:"d/m/Y" }}</small>
                 </div>
             </div>
         

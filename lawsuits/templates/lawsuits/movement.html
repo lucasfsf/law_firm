@@ -16,7 +16,8 @@
                     </h5>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Atualizado em {{ movement.date_added }}</small>
+                    <!--TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles" -->
+                    <small class="text-muted">Updated in {{ movement.date_added|date:"d/m/Y - H:i" }}</small>
                 </div>
             </div>
         

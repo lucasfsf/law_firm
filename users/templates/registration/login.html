@@ -2,6 +2,7 @@
 {% load bootstrap4 %}
 
 {% block page_header %}
+    <!--TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles" -->
     <h2>Log in to your account.</h2>
 {% endblock page_header %}
 
@@ -11,6 +12,7 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
+            <!--TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles" -->
             <button name="submit" class="btn btn-primary">Log In</button>
         {% endbuttons %}
 

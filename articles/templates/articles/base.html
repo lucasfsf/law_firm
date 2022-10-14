@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--TODO The line below sets the Law Firm name that is disblay in the browser.-->
     <title>Law Firm</title>
 
     {% bootstrap_css %}
@@ -15,7 +16,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
-
+        <!--TODO The line below sets the Law Firm name that is disblay in the navigation.-->
         <a class="navbar-brand" href="{% url 'articles:index' %}">Law Firm</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -23,6 +24,7 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
+           <!--TODO The itens below are setting the link and the name for the navigation menu. You should only translate the word just before the </a>.-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'articles:articles' %}">Articles</a></li>
