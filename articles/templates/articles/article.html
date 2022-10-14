@@ -1,0 +1,13 @@
+{% extends 'articles/base.html' %}
+{% load bootstrap4 %}
+
+{% bootstrap_messages %}
+
+{% block page_header %}
+    <h2>{{ article.title }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+    <p>{{ article.content }}</p>
+
+{% endblock content %}

@@ -1,3 +1,4 @@
+from random import choices
 from django.db import models
 
 class Article(models.Model):

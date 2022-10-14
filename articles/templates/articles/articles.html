@@ -12,16 +12,18 @@
     <div class="card-deck">
         {% for article in articles %}
             <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{ article.title }}</h5>
+                    <h5 class="card-title">
+                        <a href="{% url 'articles:article' article.id %}">{{ article.title }}</a>
+                    </h5>
                     <h6 class="card-subtitle mb-2 text-muted">Temporary Law</h6>
-                    <p class="card-text">{{ article.content }}</p>
+                    <p class="card-text">{{ article.content|truncatechars:100 }}</p>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Published in {{ article.date_added }}</small>
                 </div>
             </div>
+        
         {% endfor %}
     </div>
 

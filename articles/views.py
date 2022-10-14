@@ -12,3 +12,11 @@ def articles(request):
         'articles': articles,
     }
     return render(request, 'articles/articles.html', context)
+
+def article(request, article_id):
+    # Shows a single, full, article
+    article = Article.objects.get(id=article_id)
+    context = {
+        "article": article,
+    }
+    return render(request, "articles/article.html", context)
