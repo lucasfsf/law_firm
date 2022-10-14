@@ -23,7 +23,7 @@ class Movement(models.Model):
     Its in a separete model so that the history of the process can be mantained"""
     lawsuit = models.ForeignKey(Lawsuit, on_delete=models.CASCADE)
     description = RichTextField()
-    date_added = models.DateField(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.lawsuit.description} - {self.description}"
+        return f"{self.lawsuit.description} - {self.date_added}"
