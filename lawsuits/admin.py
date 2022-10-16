@@ -13,7 +13,13 @@ class CustomerInLine(admin.StackedInline):
 class UserAdmin(BaseUserAdmin):
     inlines = (CustomerInLine,)
 
+class LawsuitAdmin(admin.ModelAdmin):
+    search_fields = ['number', 'description']
+
+class MovementAdmin(admin.ModelAdmin):
+    search_fields = ['description', 'date_added']
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-admin.site.register(Lawsuit)
-admin.site.register(Movement)
+admin.site.register(Lawsuit, LawsuitAdmin)
+admin.site.register(Movement, MovementAdmin)
