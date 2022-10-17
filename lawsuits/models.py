@@ -4,6 +4,7 @@ from ckeditor.fields import RichTextField
 
 class Customer(models.Model):
     """A model that represents a single costumer that can have more than on lawsuit"""
+    # TODO - You might want to update these variables with the user information you want to keep track of. 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     cpf = models.CharField(max_length=14)
     phone = models.CharField(max_length=14)
