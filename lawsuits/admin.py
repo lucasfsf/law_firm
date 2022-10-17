@@ -19,6 +19,9 @@ class LawsuitAdmin(admin.ModelAdmin):
 class MovementAdmin(admin.ModelAdmin):
     search_fields = ['description', 'date_added']
 
+
+#teste
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Lawsuit, LawsuitAdmin)
