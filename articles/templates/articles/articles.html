@@ -11,8 +11,12 @@
 {% block content %}
 
     <form action="{% url 'articles:articles' %}">
-        <input type="text" name="q">
-        <button type="submit">Search</button>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="q">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary">Search</button>
+            </div>
+        </div>
     </form>
     <p></p>
 
