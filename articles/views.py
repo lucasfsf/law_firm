@@ -7,7 +7,13 @@ def index(request):
     return render(request, 'articles/index.html')
 
 def articles(request):
-    articles = Article.objects.order_by('-date_added')
+    # Checks if something was searched
+    if not request.GET:
+        # Nothing was searched
+        articles = Article.objects.order_by('-date_added')
+    else:
+        search_term = request.GET['q']
+        articles = Article.objects.filter(content__icontains=search_term).order_by('-date_added')
     context = {
         'articles': articles,
     }

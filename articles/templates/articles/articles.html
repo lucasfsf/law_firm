@@ -10,6 +10,12 @@
 
 {% block content %}
 
+    <form action="{% url 'articles:articles' %}">
+        <input type="text" name="q">
+        <button type="submit">Search</button>
+    </form>
+    <p></p>
+
     <div class="card-deck">
         {% for article in articles %}
             <div class="card">
