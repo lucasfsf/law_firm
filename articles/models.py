@@ -1,9 +1,11 @@
 from django.db import models
+from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
 
 class Article(models.Model):
     title = models.CharField(max_length=150)
+    slug = models.SlugField(null=True, blank=True)
     content = RichTextField()
     date_added = models.DateField(auto_now_add=True)
 
@@ -36,6 +38,11 @@ class Article(models.Model):
         choices=TRIBUTARY_LAW_CHOICES, 
         default=OTHERS,
         )
+
+    def save(self, *args, **kwargs):
+        if self.slug is None:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
