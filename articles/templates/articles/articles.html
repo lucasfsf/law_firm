@@ -4,8 +4,7 @@
 {% bootstrap_messages %}
 
 {% block page_header %}
-    <!--TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles" -->
-    <h2>Articles</h2>
+    <h2>{{ articles_title }}</h2>
 {% endblock page_header %}
 
 {% block content %}
@@ -14,6 +13,7 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" name="q">
             <div class="input-group-append">
+                <!--TODO You might want to update the text based on your language. I.E  "Direito"/"Law" -->
               <button class="btn btn-outline-secondary">Search</button>
             </div>
         </div>

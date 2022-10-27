@@ -2,13 +2,11 @@
 
 {% block page_header %}
     <div class="jumbotron">
-        <!--TODO The line below sets the Law Firm name that is disblay in the main page.-->
-        <h1 class="display-3">Lawfirm</h1>
+        <h1 class="display-3">{{ company_name }}</h1>
         <!--TODO The line below sets the home page text.-->
-        <p class="lead">A webapp template to be used by lawfirms where you can publish
-            articles and your clients will be able to keeptrack of their lawsuits in a friendly, non-lawyery language.</p>
+        <p class="lead">{{ company_description }}</p>
 
-        <a class="btn btn-lg btn-primary" href="{% url 'contacts:contact' %}">Contact</a>
+        <a class="btn btn-lg btn-primary" href="{% url 'contacts:contact' %}">{{ contact_title }}</a>
 
     </div>
 {% endblock page_header %}

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--TODO The line below sets the Law Firm name that is disblay in the browser.-->
-    <title>Law Firm</title>
+    <title>{{ company_name }}</title>
 
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
         <!--TODO The line below sets the Law Firm name that is disblay in the navigation.-->
-        <a class="navbar-brand" href="{% url 'articles:index' %}">Law Firm</a>
+        <a class="navbar-brand" href="{% url 'articles:index' %}">{{ company_name }}</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -27,21 +27,21 @@
            <!--TODO The itens below are setting the link and the name for the navigation menu. You should only translate the word just before the </a>.-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'articles:articles' %}">Articles</a></li>
+                    <a class="nav-link" href="{% url 'articles:articles' %}">{{ articles_title }}</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'lawsuits:lawsuits' %}">Lawsuits</a></li>
+                    <a class="nav-link" href="{% url 'lawsuits:lawsuits' %}">{{ law_suits_title }}</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacts:contact' %}">Contact</a></li>
+                    <a class="nav-link" href="{% url 'contacts:contact' %}">{{ contact_title }}</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:dashboard' %}">Account</a></li>
+                        <a class="nav-link" href="{% url 'users:dashboard' %}">{{ account_title }}</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:logout' %}">Log out</a></li>
+                        <a class="nav-link" href="{% url 'users:logout' %}">{{ logout_title }}</a></li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login' %}">Log in</a></li>
+                        <a class="nav-link" href="{% url 'users:login' %}">{{ login_title }}</a></li>
                 {% endif %}
 
             </ul>
