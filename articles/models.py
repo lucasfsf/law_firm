@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
@@ -39,10 +40,14 @@ class Article(models.Model):
         default=OTHERS,
         )
 
-    def save(self, *args, **kwargs):
-        if self.slug is None:
-            self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.title
+
+from django.db.models.signals import pre_save
+
+def article_pre_save(sender, instance, *args, **kwargs):
+    if instance.slug is None:
+            instance.slug = slugify(instance.title)
+
+# Connecting article_pre_save to pre_save SIGNAL
+pre_save.connect(article_pre_save, sender=Article)
