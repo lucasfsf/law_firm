@@ -52,9 +52,8 @@ def article_pre_save(sender, instance, *args, **kwargs):
             qs = Article.objects.filter(slug=slugified_url).exclude(id=instance.id)
             if qs.exists():
                 # slug url already being used by another article
-                slugified_url = f'{slugified_url}-{qs.count() + 1}'
-            else:
-                instance.slug = slugified_url
+                slugified_url = f'{slugified_url}-{qs.count() + 1}'            
+            instance.slug = slugified_url
 
 # Connecting article_pre_save to pre_save SIGNAL
 pre_save.connect(article_pre_save, sender=Article)
