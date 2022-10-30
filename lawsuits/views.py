@@ -3,15 +3,17 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Lawsuit, Movement
 
+from articles.company_fields import default_company_values
+
+context = default_company_values
 
 @login_required
 def lawsuits(request):
-    context = {}
     if request.user.is_authenticated:
         lawsuits = Lawsuit.objects.filter(customer=request.user)
-        context = {
-            "lawsuits": lawsuits,
-        }
+        context["lawsuits"] = lawsuits
+        print(context)
+
 
     return render(request, "lawsuits/lawsuits.html", context)
 
@@ -23,8 +25,7 @@ def movement(request, lawsuit_id):
         return redirect("lawsuits:lawsuits")
         
     movements = Movement.objects.filter(lawsuit=lawsuit).order_by('-date_added')
-    context = {
-        "movements": movements,
-        "lawsuit": lawsuit,
-    }
+    context["movements"] = movements
+    context["lawsuit"] = lawsuit
+
     return render(request, "lawsuits/movement.html", context)

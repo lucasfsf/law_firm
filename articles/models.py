@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from django.db.models.signals import pre_save
 
 
 class Article(models.Model):
@@ -43,11 +44,17 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
-from django.db.models.signals import pre_save
 
 def article_pre_save(sender, instance, *args, **kwargs):
     if instance.slug is None:
-            instance.slug = slugify(instance.title)
+            slugified_url = slugify(instance.title)
+            # check if it already exists
+            qs = Article.objects.filter(slug=slugified_url).exclude(id=instance.id)
+            if qs.exists():
+                # slug url already being used by another article
+                slugified_url = f'{slugified_url}-{qs.count() + 1}'
+            else:
+                instance.slug = slugified_url
 
 # Connecting article_pre_save to pre_save SIGNAL
 pre_save.connect(article_pre_save, sender=Article)

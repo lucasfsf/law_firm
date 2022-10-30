@@ -4,6 +4,10 @@ from django.http import HttpResponse
 
 from .forms import ContactForm
 
+from articles.company_fields import default_company_values
+
+context = default_company_values
+
 def contact(request):
     
     if request.method != 'POST':
@@ -29,8 +33,6 @@ def contact(request):
                 # TODO You might want to update the text based on your language. I.E  "Artigos"/"Articles"
                 return HttpResponse('Invalid header found.')
             return redirect("articles:index")
-    context = {
-        'form': form,
-    }
+    context['form'] = form
     return render(request, "contacts/contact_form.html", context)
 
