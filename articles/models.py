@@ -1,3 +1,4 @@
+from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
@@ -7,7 +8,7 @@ from django.db.models.signals import pre_save
 
 class Article(models.Model):
     title = models.CharField(max_length=150)
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(null=True, blank=True, max_length=150)
     content = RichTextField()
     date_added = models.DateField(auto_now_add=True)
 

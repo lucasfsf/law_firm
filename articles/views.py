@@ -21,9 +21,9 @@ def articles(request):
     context['articles'] = articles
     return render(request, 'articles/articles.html', context)
 
-def article(request, article_id):
+def article(request, slug):
     # Shows a single, full, article
-    article = Article.objects.get(id=article_id)
+    article = Article.objects.get(slug=slug)
     context['article'] = article
 
     return render(request, "articles/article.html", context)

@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{% url 'articles:article' article.id %}">{{ article.title }}</a>
+                        <a href="{% url 'articles:article' article.slug %}">{{ article.title }}</a>
                     </h5>
                     <!--TODO You might want to update the text based on your language. I.E  "Direito"/"Law" -->
                     <h6 class="card-subtitle mb-2 text-muted">{{ article.get_law_type_display }} Law</h6>
