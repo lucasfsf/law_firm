@@ -49,7 +49,7 @@ def article_pre_save(sender, instance, *args, **kwargs):
     if instance.slug is None:
             slugified_url = slugify(instance.title)
             # check if it already exists
-            qs = Article.objects.filter(slug=slugified_url).exclude(id=instance.id)
+            qs = Article.objects.filter(slug__contains=slugified_url).exclude(id=instance.id)
             if qs.exists():
                 # slug url already being used by another article
                 slugified_url = f'{slugified_url}-{qs.count() + 1}'            
