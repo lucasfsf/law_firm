@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.utils.text import slugify
 
 # Create your tests here.
 from .models import Article
@@ -6,8 +7,10 @@ from .models import Article
 class ArticleTestCase(TestCase):
     def setUp(self):
         self.number_of_articles = 10
+        self.article_title = 'Test Title'
+        self.slugified_title = slugify(self.article_title)
         for i in range(self.number_of_articles):
-            Article.objects.create(title='Test Title', content='blable', law_type='TR')
+            Article.objects.create(title=self.article_title, content='blable', law_type='TR')
         self.articles = Article.objects.filter(title="Test Title")
         
     def test_queryset_exists(self):
@@ -26,11 +29,11 @@ class ArticleTestCase(TestCase):
         self.assertEqual(len(self.articles), len(set(self.articles)))
 
     def test_first_slug(self):
-        qs = Article.objects.all().first()
-        self.assertEqual(qs.slug, 'test-title')
+        qs = Article.objects.all().order_by('id').first()
+        self.assertEqual(qs.slug, self.slugified_title)
     
     def test_last_slug(self):
-        qs = Article.objects.all().last()
-        qs_slug = f'test-title-{self.number_of_articles}'
+        qs = Article.objects.all().order_by('id').last()
+        qs_slug = f'{self.slugified_title}-{self.number_of_articles}'
         self.assertEqual(qs.slug, qs_slug)
         
