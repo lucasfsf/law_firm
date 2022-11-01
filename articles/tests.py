@@ -36,4 +36,8 @@ class ArticleTestCase(TestCase):
         qs = Article.objects.all().order_by('id').last()
         qs_slug = f'{self.slugified_title}-{self.number_of_articles}'
         self.assertEqual(qs.slug, qs_slug)
+
+    def test_article_search(self):
+        qs = Article.objects.search(self.article_title)
+        self.assertEqual(len(qs), self.number_of_articles)
         
