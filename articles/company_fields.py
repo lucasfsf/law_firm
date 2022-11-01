@@ -16,6 +16,8 @@ login_title = 'Log in'
 
 # Forms
 
+
+# Do not change values below. They are just maping to the inputs above.
 default_company_values = {
     'company_name': company_name,
     'company_description': company_description,

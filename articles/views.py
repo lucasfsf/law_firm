@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 
 from .models import Article
 
@@ -11,14 +12,15 @@ def index(request):
     return render(request, 'articles/index.html', context)
 
 def articles(request):
-    # Checks if something was searched
-    if not request.GET:
-        # Nothing was searched
-        articles = Article.objects.order_by('-date_added')
-    else:
-        search_term = request.GET['q']
-        articles = Article.objects.filter(content__icontains=search_term).order_by('-date_added')
-    context['articles'] = articles
+    # If Nothing was searched
+    qs = Article.objects.order_by('-date_added')
+    search_term = request.GET.get('q')
+    if search_term is not None:
+        # Something was searched
+        lookups = Q(content__icontains=search_term) | Q(title__icontains=search_term)
+        qs = Article.objects.filter(lookups).order_by('-date_added')
+
+    context['articles'] = qs
     return render(request, 'articles/articles.html', context)
 
 def article(request, slug):
