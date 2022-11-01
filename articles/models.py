@@ -4,13 +4,26 @@ from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from django.db.models.signals import pre_save
+from django.db.models import Q
 
+
+class ArticleManager(models.Manager):
+    def search(self, query=None):
+        if query is None or query == "":
+            # Nothing was searched
+            lookups = Q()
+        else:
+            # Something was searched
+            lookups = Q(content__icontains=query) | Q(title__icontains=query)
+        return Article.objects.filter(lookups).order_by('-date_added')
 
 class Article(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(null=True, blank=True, max_length=150)
     content = RichTextField()
     date_added = models.DateField(auto_now_add=True)
+
+    objects = ArticleManager()
 
     #Law Choices
     # TODO You might want to update the values below to add new types of law or to translate them.
@@ -44,7 +57,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-
 
 def article_pre_save(sender, instance, *args, **kwargs):
     if instance.slug is None:
