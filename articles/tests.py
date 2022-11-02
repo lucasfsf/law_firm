@@ -37,10 +37,15 @@ class ArticleTestCase(TestCase):
         qs_slug = f'{self.slugified_title}-{self.number_of_articles}'
         self.assertEqual(qs.slug, qs_slug)
 
-    def test_article_search_with_query(self):
+    def test_article_search_title_with_query(self):
         Article.objects.create(title="Searchable", content='blable', law_type='TR')
         qs = Article.objects.search("searchable")
         self.assertEqual(len(qs), 1)
+
+    def test_article_search_content_with_query(self):
+        Article.objects.create(title="Searchable", content='blable', law_type='TR')
+        qs = Article.objects.search("blable")
+        self.assertEqual(len(qs), self.number_of_articles+1)
     
     def test_article_search_empty(self):
         qs = Article.objects.search("")
