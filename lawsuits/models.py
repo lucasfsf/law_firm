@@ -15,9 +15,11 @@ class Lawsuit(models.Model):
     number = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     date_added = models.DateField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+    date_finished = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.number} - {self.description}"
+        return f"{self.number} - {self.description} - Active: {self.active}"
     
 class Movement(models.Model):
     """A model where the lawyer can describe in simple terms whats happening in the process.

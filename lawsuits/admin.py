@@ -15,6 +15,8 @@ class UserAdmin(BaseUserAdmin):
 
 class LawsuitAdmin(admin.ModelAdmin):
     search_fields = ['number', 'description']
+    readonly_fields = ['date_added']
+    raw_id_fields = ['customer']
 
 class MovementAdmin(admin.ModelAdmin):
     search_fields = ['description', 'date_added']

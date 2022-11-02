@@ -6,7 +6,7 @@ from .models import Article
 
 class ArticleTestCase(TestCase):
     def setUp(self):
-        self.number_of_articles = 10
+        self.number_of_articles = 100
         self.article_title = 'Test Title'
         self.slugified_title = slugify(self.article_title)
         for i in range(self.number_of_articles):
