@@ -40,18 +40,18 @@ class ArticleTestCase(TestCase):
     def test_article_search_title_with_query(self):
         Article.objects.create(title="Searchable", content='blable', law_type='TR')
         qs = Article.objects.search("searchable")
-        self.assertEqual(len(qs), 1)
+        self.assertEqual(qs.count(), 1)
 
     def test_article_search_content_with_query(self):
         Article.objects.create(title="Searchable", content='blable', law_type='TR')
         qs = Article.objects.search("blable")
-        self.assertEqual(len(qs), self.number_of_articles+1)
+        self.assertEqual(qs.count(), self.number_of_articles+1)
     
     def test_article_search_empty(self):
         qs = Article.objects.search("")
-        self.assertEqual(len(qs), self.number_of_articles)
+        self.assertEqual(qs.count(), self.number_of_articles)
 
     def test_article_search_none(self):
         qs = Article.objects.search(None)
-        self.assertEqual(len(qs), self.number_of_articles)
+        self.assertEqual(qs.count(), self.number_of_articles)
         
